@@ -1,0 +1,69 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f2f2f2;
+}
+
+/* Center form */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Form styling */
+form {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    width: 300px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+h2 {
+    text-align: center;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+/* Password toggle */
+.password-box {
+    display: flex;
+}
+
+.password-box input {
+    flex: 1;
+}
+
+.password-box button {
+    padding: 10px;
+}
+
+/* Button */
+button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background: black;
+    color: white;
+    cursor: pointer;
+}
+
+/* Messages */
+#error {
+    background: red;
+    color: white;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+#success {
+    background: green;
+    color: white;
+    padding: 10px;
+    margin-bottom: 10px;
+}

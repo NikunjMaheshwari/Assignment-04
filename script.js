@@ -26,34 +26,60 @@ $(document).ready(function () {
         let messageBox = $("#message");
         messageBox.html("");
 
-        // Validation
-        if (name === "" || email === "" || phone === "" || password === "") {
+        // ---------------------------
+        // REQUIRED FIELD VALIDATION
+        // ---------------------------
+        if (!name || !email || !phone || !password) {
             messageBox.html('<div id="error">All fields are required</div>');
             return;
         }
 
-        // Email validation
+        // ---------------------------
+        // NAME VALIDATION
+        // ---------------------------
+        if (name.length < 3) {
+            messageBox.html('<div id="error">Name must be at least 3 characters</div>');
+            return;
+        }
+
+        if (!/^[A-Za-z ]+$/.test(name)) {
+            messageBox.html('<div id="error">Name should contain only letters</div>');
+            return;
+        }
+
+        // ---------------------------
+        // EMAIL VALIDATION
+        // ---------------------------
         let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
-        if (!email.match(emailPattern)) {
+        if (!emailPattern.test(email)) {
             messageBox.html('<div id="error">Invalid email format</div>');
             return;
         }
 
-        // Phone validation
+        // ---------------------------
+        // PHONE VALIDATION
+        // ---------------------------
         if (!/^[0-9]{10}$/.test(phone)) {
-            messageBox.html('<div id="error">Phone must be 10 digits</div>');
+            messageBox.html('<div id="error">Phone must be exactly 10 digits</div>');
             return;
         }
 
-        // Strong password
+        // ---------------------------
+        // PASSWORD VALIDATION
+        // ---------------------------
         let passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$/;
-        if (!password.match(passwordPattern)) {
-            messageBox.html('<div id="error">Password must contain uppercase, lowercase, number (min 6 chars)</div>');
+        if (!passwordPattern.test(password)) {
+            messageBox.html('<div id="error">Password must have uppercase, lowercase, number (min 6 chars)</div>');
             return;
         }
 
-        // Success
+        // ---------------------------
+        // SUCCESS
+        // ---------------------------
         messageBox.html('<div id="success">Form submitted successfully!</div>');
+
+        // clear form after success
+        $("#myForm")[0].reset();
     });
 
 });
